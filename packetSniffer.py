@@ -25,6 +25,8 @@ try:
             src_ip = packet[IP].src
             dst_ip = packet[IP].dst
             print(f"Source IP {src_ip} destination IP {dst_ip}")
+        else:
+            print("This packet has no IP")
         
         if packet.haslayer(TCP) or packet.haslayer(UDP):
             if packet.haslayer(TCP):
@@ -35,6 +37,8 @@ try:
                 src_port = packet[UDP].sport
                 dst_port = packet[UDP].dport
                 protocol = "UDP"
+            else:
+                print("This packet has no TCP or UDP port")
     
             print(f"Source Port {src_port} destination Port {dst_port} Protocol {protocol}")
         
